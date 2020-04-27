@@ -54,6 +54,26 @@ export function fromValues(x, y, z, w) {
   return out;
 }
 
+// w = 1, translation reuslt will be x+tx, y+ty etc.
+// w = 0, translation reuslt will be x,y,z, translation cancelled
+export function fromPoint(a) {
+  let out = new glMatrix.ARRAY_TYPE(4);
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = 1;
+  return out;
+}
+
+export function fromVec3(a) {
+  let out = new glMatrix.ARRAY_TYPE(4);
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = 0;
+  return out;
+}
+
 /**
  * Copy the values from one vec4 to another
  *
