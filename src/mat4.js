@@ -2012,3 +2012,20 @@ export const mul = multiply;
  * @function
  */
 export const sub = subtract;
+
+//cut one row and one col from mat4
+export function cut(out, a, row, col) {
+  let index = 0
+  for(let i = 0; i < 4; i++) {
+    for(let j = 0; j < 4; j++) {
+      if(i == row || j == col) {
+        continue;
+      }
+      let target = index++
+      let source = 4 * i + j
+      out[target] = a[source]
+    }
+  }
+
+  return out;
+}

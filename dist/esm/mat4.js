@@ -1821,4 +1821,22 @@ export var mul = multiply;
  * @function
  */
 
-export var sub = subtract;
+export var sub = subtract; //cut one row and one col from mat4
+
+export function cut(out, a, row, col) {
+  var index = 0;
+
+  for (var i = 0; i < 4; i++) {
+    for (var j = 0; j < 4; j++) {
+      if (i == row || j == col) {
+        continue;
+      }
+
+      var target = index++;
+      var source = 4 * i + j;
+      out[target] = a[source];
+    }
+  }
+
+  return out;
+}
